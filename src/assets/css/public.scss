@@ -1,0 +1,316 @@
+@import "mixin";
+
+/**待办列表*/
+@mixin list {
+  box-shadow: 0px 0.3rem 0.2rem 0px rgba(0, 0, 0, 0.05);
+  margin-top: 0.5rem;
+  background: #fff;
+  .title {
+    @include sc(0.65rem, $font);
+    height: 2rem;
+    line-height: 2rem;
+    border-bottom: 1px solid $border;
+    padding: 0 0.5rem;
+    span:first-child {
+      max-width: 10rem;
+      @include ellipsis;
+      @include sc(0.75rem, $black);
+    }
+  }
+  .content {
+    @include sc(0.7rem, $content);
+    padding: 0.5rem;
+    min-height: 1.5rem;
+    align-items: center;
+    .circle {
+      @include wh(8px, 8px);
+      position: absolute;
+      border-radius: 50%;
+      background: $warning;
+    }
+  }
+  &:nth-child(1) {
+    margin-top: 0;
+  }
+}
+
+/**搜索列表*/
+@mixin search-list {
+  padding: 0 0.5rem;
+  li {
+    @include fj();
+    height: 2rem;
+    div {
+      width: 75%;
+      height: 100%;
+      justify-content: flex-end;
+      .category {
+        text-align: right;
+        padding: 0.5rem 0;
+      }
+    }
+  }
+}
+
+/**报表*/
+@mixin chart {
+  .type {
+    height: 2rem;
+    line-height: 1;
+    font-size: 0.7rem;
+    .van-dropdown-menu {
+      height: 100%;
+    }
+  }
+  .title {
+    position: absolute;
+    left: 0.5rem;
+    top: 0.25rem;
+    z-index: 1;
+    @include fj(center);
+    > span {
+      @include block;
+    }
+  }
+  .icon-filter {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+    @include wh(1rem, 1rem);
+  }
+  .info {
+    height: 6.5rem;
+    background: #fff;
+    position: relative;
+    @include fj(center);
+    .index,
+    .reach,
+    .rate {
+      @include wh(28%, 3rem);
+      margin-top: 1.5rem;
+      box-shadow: 0px 0.1rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+      justify-content: center;
+    }
+  }
+  .indicator {
+    position: relative;
+    margin: 0.75rem auto;
+    background: #fff;
+    overflow: hidden;
+    .content {
+      width: 100%;
+      margin-top: 2rem;
+      border-top: 1px solid $border;
+      position: relative;
+      @include sc(0.7rem, #333);
+      .column {
+        width: 20%;
+        float: left;
+        li {
+          @include wh(100%, 1.6rem);
+          line-height: 1.6rem;
+          &:not(:first-child) {
+            @include hairline-bottom;
+          }
+          &:first-child {
+            height: 2rem;
+            line-height: 2rem;
+          }
+          &:nth-child(2) {
+            background: #f5f5f5;
+          }
+        }
+      }
+      .row {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        margin-left: 20%;
+        li {
+          @include fj();
+          height: 1.6rem;
+          line-height: 1.6rem;
+          float: left;
+          &:not(:first-child) {
+            @include hairline-bottom;
+          }
+          &:first-child {
+            height: 2rem;
+          }
+        }
+      }
+      .nodata {
+        padding: 2rem 0 1rem 0;
+        .icon-svg {
+          @include wh(3rem, 3rem);
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+    .van-pagination {
+      width: 100%;
+    }
+  }
+}
+
+/**cell-list*/
+@mixin cell-list {
+  .van-cell__title {
+    @include fj();
+    justify-content: flex-start;
+    .svg-icon {
+      margin-right: 5px;
+      @include wh(1.2rem, 1.2rem);
+    }
+  }
+}
+
+/**联系人列表*/
+@mixin swipe-cell {
+  @include sc(0.7rem, $font);
+  min-height: 28rem;
+  overflow-x: hidden; /*隐藏x轴的滚动条*/
+  li {
+    box-shadow: 0px 0.3rem 0.2rem 0px rgba(0, 0, 0, 0.05);
+    margin-bottom: 0.5rem;
+    background: #fff;
+    .swipe-item {
+      padding: 0.5rem;
+      > div {
+        line-height: 1.5;
+        justify-content: space-between;
+        &:first-child {
+          justify-content: normal;
+          @include sc(0.75rem, $black);
+          > span:last-child {
+            margin-left: 0.4rem;
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**日报列表*/
+@mixin daily-list {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  @include sc(0.65rem, $black);
+  .title {
+    text-align: left;
+    padding: 0.25rem 0.5rem;
+  }
+  li {
+    background: #fff;
+    padding: 0.5rem;
+    @include hairline-bottom;
+    .left {
+      div {
+        line-height: 1.5;
+        text-align: left;
+        &:nth-child(1) {
+          font-size: 0.75rem;
+        }
+        &:nth-child(2) {
+          padding-left: 10px;
+        }
+        &:nth-child(3) {
+          color: $font;
+        }
+      }
+    }
+    .right {
+      .svg-icon {
+        @include wh(2rem, 2rem);
+        margin-right: 0.25rem;
+      }
+    }
+  }
+}
+
+/**日程列表*/
+@mixin schedule-list {
+  width: calc(100% - 1rem);
+  background: #fff;
+  padding: 0.5rem;
+  .left {
+    justify-content: flex-start;
+    flex-basis: 93%;
+    .svg-icon {
+      @include wh(1rem, 1rem);
+      margin-right: 0.25rem;
+    }
+    .sign {
+      flex: 1;
+      margin-left: 0.5rem;
+      text-align: left;
+      div {
+        margin-bottom: 3px;
+        &.location {
+          @include fj(flex-start);
+          color: $font;
+          font-size: 0.6rem !important;
+        }
+        .edit {
+          padding: 0 3px;
+          color: $font;
+          border: 1px dashed $border;
+        }
+        &:not(:first-child) {
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+}
+
+/**OA申请*/
+@mixin OA-list {
+  section {
+    text-align: left;
+    padding-block-end: 3rem;
+    ul {
+      padding: 0 0.5rem;
+      background: #fff;
+      li {
+        padding: 0.5rem 0;
+        @include fj();
+        &:last-child {
+          border: 0;
+        }
+        span {
+          flex-basis: 50%;
+        }
+        .toSelect {
+          flex-basis: 50%;
+          > span {
+            flex-basis: auto;
+          }
+        }
+      }
+    }
+    .discription {
+      @extend ul;
+      > span {
+        width: 100%;
+        padding: 0.25rem 0 0 0;
+      }
+      textarea {
+        @include wh(calc(100% - 1rem), 4rem);
+        padding: 0.5rem;
+        border: none;
+      }
+    }
+  }
+  .modal {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    span {
+      margin-bottom: 0.25rem;
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+}

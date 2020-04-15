@@ -1,0 +1,223 @@
+@import 'mixin';
+$color: $blue;
+$color1: #0aeef9;
+
+.theme {
+  color: $blue;
+}
+
+.success {
+  color: #22ac38 !important;
+}
+
+.promot {
+  color: #f39700 !important;
+}
+
+.warning{
+  color: #f90a0a !important;
+}
+
+.black {
+  color: $black;
+}
+
+span{
+  display: inline-block;
+}
+
+.bgc{
+    background: -webkit-linear-gradient(left, $color1 , $color); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, $color1, $color); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, $color1, $color); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, $color1 , $color); /* 标准的语法 */
+}
+
+html {
+  body {
+    height: 100vh;
+    margin: 0;
+    background: #f5f5f5;
+    #app {
+      height: 100%;
+      padding: 0;
+      margin-top: 2.2rem;
+      font-size: .75rem;
+    }
+  }
+}
+
+.isDd {
+  margin-top:0 !important;
+}
+
+section {
+  text-align: center;
+}
+
+input, button {
+  border: none;
+}
+
+li {
+  list-style: none;
+}
+
+.delete-button {
+  height: 100%;
+}
+
+.auto {
+  height: auto !important;
+}
+
+.flex-row {
+  @include fj();
+}
+
+.flex-start {
+  @include fj(flex-start);
+}
+
+.flex-column {
+  flex-direction: column;
+  @include fj(center);
+}
+
+.fl {
+  float: left;
+}
+
+.readonly {
+  color: #7d7e80;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.break-word {
+  word-wrap: break-word; // 单词不截断自动换行
+  word-break: break-all; // 单词截断自动换行
+  overflow: hidden;
+}
+
+.min-height {
+  min-height: 2rem;
+}
+
+.distence {
+  padding-block-end: 3rem;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #dedede;
+}
+
+/**为元素添加 Retina 屏幕下的 1px 边框（即 hairline）*/
+.hairline-bottom {
+  @include hairline-bottom();
+}
+
+/**无数据*/
+.nodata {
+  @include sc($font_size, $font);
+  text-align: center;
+  padding-block-start: 50%;
+}
+
+/**审批按钮*/
+.approcal {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: .5rem 0;
+  z-index: 9;
+  button{
+    width: 47%;
+    font-size: .8rem;
+    border-radius: .4rem;
+    &:first-child{
+      margin-left:.4rem;
+    }
+    &:last-child{
+      margin-right:.4rem;
+    }
+  }
+}
+
+/**提交按钮*/
+.submit {
+  @include wh(100%, 2.5rem);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  justify-content: center;
+  .van-button {
+    width: 90%;
+  }
+} 
+
+/**ag-modal模态框*/
+.input-div {
+  width: 100%;
+  padding: 0 .5rem;
+  .input-name {
+    @include fj(center);
+    padding: 8px 0;
+    position: relative;
+    box-sizing: border-box;
+  }
+}
+
+/**vant-cell表单*/
+.van-cell {
+  width: 100% !important;
+  font-size: .75rem;
+}
+
+.van-checkbox__label {
+  width: 100%;
+}
+
+/**mint-cell表单*/
+.mint-cell:last-child, .mint-cell-wrapper {
+  background-image: none;
+}
+.mint-cell {
+  min-height: inherit;
+  .mint-cell-wrapper {
+    margin-bottom: .4rem;
+  }
+}
+
+/**解决部分ios下滑动卡顿*/
+.mint-indexlist-content {
+  -webkit-overflow-scrolling: touch;
+}
+
+/**vant-collapse*/
+.van-collapse-item__content {
+  padding: 0 .75rem !important;
+}
+
+/**vue transition*/
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+/**vant-icon-arrow*/
+.van-icon-arrow {
+  font-size: 16px;
+  color: #969799;
+}

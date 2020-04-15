@@ -1,0 +1,119 @@
+$blue: #26a2ff;  
+$dd: #5e98f6;  
+$bc: #5e5e5e;
+$black: #333;
+$content: #666;
+$font: #999;
+$border:#dedede;
+$success: #07c160;
+$promot: #f39700;
+$warning: #ee0a24;
+
+$font_size: .7rem;
+
+/**背景图片地址和大小*/
+@mixin bis($url) { 
+	background-image: url($url);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+/**圆角*/
+@mixin borderRadius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+/**定位上下左右居中*/
+@mixin center {  
+	position: absolute;
+	top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/**定位上下居中*/
+@mixin ct {  
+	position: absolute;
+	top: 50%;
+  transform: translateY(-50%);
+}
+
+/**定位左右居中*/
+@mixin cl {  
+	position: absolute;
+	left: 50%;
+  transform: translateX(-50%);
+}
+
+/**宽高*/
+@mixin wh($width, $height){
+	width: $width;
+	height: $height;
+}
+
+/**字体大小，颜色*/
+@mixin sc($size, $color){
+	font-size: $size;
+	color: $color;
+}
+
+/**flex 布局和 子元素 对其方式*/
+@mixin fj($type: space-between){
+	display: flex;
+  justify-content: $type;
+  align-items: center;
+}
+
+/**单行文字溢出隐藏*/
+@mixin ellipsis{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/**icon提示信息*/
+@mixin info {
+  @include wh(1.1rem, 1.1rem);
+  @include sc(0.6rem, #fff);
+  line-height: 1.1rem;
+  border-radius: 50%;
+  background: $warning;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: .8rem;
+}
+
+/**标题伪类块*/
+@mixin block {
+  @include fj(flex-start);
+  &::before {
+    @include wh(0.25rem, 1rem);
+    @include borderRadius(2px);
+    content: "";
+    display: inline-block;
+    background: $blue;
+    margin-right: 0.25rem;
+  }
+}
+
+/**为元素添加 Retina 屏幕下的 1px 边框（即 hairline）*/
+@mixin hairline-bottom {
+  position: relative;
+  &:not(:last-child)::after {
+    position: absolute;
+    box-sizing: border-box;
+    content: ' ';
+    pointer-events: none;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid #ebedf0;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5)
+  }
+}
